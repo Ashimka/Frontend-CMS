@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+import axios, { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -25,9 +26,9 @@ export function useAuthForm(isReq: boolean) {
 			toast.success('Вы авторизовались')
 			router.replace(DASHBOARD_URL.home())
 		},
-		onError(error) {
-			error.message
-				? toast.error(error.message)
+		onError(error: Error | AxiosError) {
+			axios.isAxiosError(error)
+				? toast.error(error.response?.data?.message)
 				: toast.error('Ошибка авторизации')
 		}
 	})
