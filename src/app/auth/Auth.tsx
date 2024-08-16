@@ -16,6 +16,7 @@ import { Form } from '@/components/ui/form-elements/Form'
 
 import styles from './Auth.module.scss'
 import { AuthFields } from './AuthFields'
+import { Social } from './Social'
 import { useAuthForm } from './useAuthForm'
 
 export default function Auth() {
@@ -47,6 +48,7 @@ export default function Auth() {
 								<Button disabled={isPending}>Продолжить</Button>
 							</form>
 						</Form>
+						<Social />
 					</CardContent>
 					<CardFooter>
 						{isReq ? 'Есть аккаунт?' : 'Нет аккаунта'}
