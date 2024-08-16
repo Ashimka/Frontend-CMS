@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import { PUBLIC_URL } from '@/config/url.config'
+import { DASHBOARD_URL } from '@/config/url.config'
 
 import { authService } from '@/services/auth/auth.service'
 
@@ -23,7 +23,7 @@ export function useAuthForm(isReq: boolean) {
 		onSuccess() {
 			form.reset()
 			toast.success('Вы авторизовались')
-			router.replace(PUBLIC_URL.home())
+			router.replace(DASHBOARD_URL.home())
 		},
 		onError(error) {
 			error.message
