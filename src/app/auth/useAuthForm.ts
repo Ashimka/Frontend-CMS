@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import { DASHBOARD_URL } from '@/config/url.config'
+import { PROFILE_URL } from '@/config/url.config'
 
 import { authService } from '@/services/auth/auth.service'
 
@@ -24,7 +24,7 @@ export function useAuthForm(isReq: boolean) {
 		onSuccess() {
 			form.reset()
 			toast.success('Вы авторизовались')
-			router.replace(DASHBOARD_URL.home())
+			router.replace(PROFILE_URL.home())
 		},
 		onError(error: Error | AxiosError) {
 			axios.isAxiosError(error)

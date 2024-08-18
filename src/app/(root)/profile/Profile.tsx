@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 import { saveTokenStorage } from '@/services/auth/auth-token.serice'
 
-export function Dashboard() {
+export function Profile() {
 	const searchParams = useSearchParams()
 
 	useEffect(() => {
@@ -15,5 +15,5 @@ export function Dashboard() {
 			saveTokenStorage(accessToken)
 		}
 	}, [searchParams])
-	return <div>Dashboard</div>
+	return <div>Profile</div>
 }

@@ -11,15 +11,24 @@ export const PUBLIC_URL = {
 	category: (id = '') => PUBLIC_URL.root(`/categories/${id}`)
 }
 
+export const PROFILE_URL = {
+	root: (url = '') => `/profile${url ? url : ''}`,
+
+	home: () => PROFILE_URL.root('/'),
+	favorites: () => PROFILE_URL.root('/favorites')
+}
+
 export const DASHBOARD_URL = {
 	root: (url = '') => `/dashboard/${url ? url : ''}`,
 
 	home: () => DASHBOARD_URL.root('/'),
 	favorites: () => DASHBOARD_URL.root('/favorites'),
 
+	products: () => DASHBOARD_URL.root(`/products`),
 	productCreate: () => DASHBOARD_URL.root(`/products/create`),
 	productEdit: (id = '') => DASHBOARD_URL.root(`/products/${id}`),
 
+	categories: () => DASHBOARD_URL.root(`/categories`),
 	categoryCreate: () => DASHBOARD_URL.root(`/categories/create`),
 	categoryEdit: (id = '') => DASHBOARD_URL.root(`/categories/${id}`),
 

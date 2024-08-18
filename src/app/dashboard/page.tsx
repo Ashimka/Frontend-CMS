@@ -1,8 +1,6 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-
-import Store from './Store'
 
 export const metadata: Metadata = {
 	title: 'Управление магазином',
@@ -10,5 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function StorePage() {
-	return <Store />
+	return <div>Dashboard</div>
 }
