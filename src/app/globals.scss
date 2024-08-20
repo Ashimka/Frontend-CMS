@@ -69,3 +69,10 @@
 		font-family: var(--font-geist-sans), sans-serif;
 	}
 }
+
+@layer base {
+	img {
+		width: auto;
+		height: auto;
+	}
+}

@@ -23,7 +23,7 @@ export function LastUsers({ data }: LastUsersProps) {
 					data?.map(
 						user =>
 							user?.total && (
-								<div className={styles.user}>
+								<div className={styles.user} key={user.id}>
 									<Image
 										src={user.avatar}
 										alt={user.name}
