@@ -44,7 +44,7 @@ const Products = () => {
 						/>
 						<div className={styles.buttons}>
 							<Link href={DASHBOARD_URL.productCreate()}>
-								<Button variant='destructive'>
+								<Button variant='primary'>
 									<Plus />
 									Добавить
 								</Button>

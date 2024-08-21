@@ -5,6 +5,15 @@ import { API_URL } from '@/config/api.config'
 import { ICategory, ICategoryInput } from '@/shared/types/category.interface'
 
 class CategoryService {
+	async getAll() {
+		const { data } = await axiosClassic<ICategory[]>({
+			url: API_URL.categories(),
+			method: 'GET'
+		})
+
+		return data
+	}
+
 	async getById(id: string) {
 		const { data } = await axiosClassic<ICategory>({
 			url: API_URL.categories(`/by-id/${id}`),
@@ -14,9 +23,9 @@ class CategoryService {
 		return data
 	}
 
-	async create(data: ICategoryInput, storeId: string) {
+	async create(data: ICategoryInput) {
 		const { data: createdCategory } = await axiosWithAuth<ICategory>({
-			url: API_URL.categories(`/${storeId}`),
+			url: API_URL.categories(`/`),
 			method: 'POST',
 			data
 		})
