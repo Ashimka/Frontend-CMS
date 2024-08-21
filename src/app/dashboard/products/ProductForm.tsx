@@ -20,6 +20,7 @@ import {
 	FormMessage
 } from '@/components/ui/form-elements/Form'
 import { Input } from '@/components/ui/form-elements/Input'
+import { ImageUpload } from '@/components/ui/form-elements/image-upload/ImageUpload'
 import { ConfirmModal } from '@/components/ui/modals/ConfirmModal'
 import { Textarea } from '@/components/ui/Еextarea'
 
@@ -94,13 +95,13 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 						render={({ field }) => (
 							<FormItem className='mt-4'>
 								<FormLabel>Картинки</FormLabel>
-								{/* <FormControl>
+								<FormControl>
 									<ImageUpload
 										isDisabled={isLoadingCreate || isLoadingUpdate}
 										onChange={field.onChange}
 										value={field.value}
 									/>
-								</FormControl> */}
+								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
