@@ -18,13 +18,16 @@ interface ImageUploadProps {
 export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 	const { handleButtonClick, isUploading, fileInputRef, handleFileChange } =
 		useUpload(onChange)
+	const imageValues: string[] = Array.isArray(value as unknown as string)
+		? value
+		: value.toString().split(',')
 
 	return (
 		<div>
 			<div className={styles.image_container}>
-				{value.map(url => (
+				{imageValues?.map(url => (
 					<div key={url} className={styles.image_wrapper}>
-						<Image src={url} alt='Картинка' fill />
+						<Image src={url} alt='Картинка' fill sizes='auto' />
 					</div>
 				))}
 			</div>
