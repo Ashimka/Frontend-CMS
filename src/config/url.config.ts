@@ -27,6 +27,7 @@ export const DASHBOARD_URL = {
 	products: () => DASHBOARD_URL.root(`/products`),
 	productCreate: () => DASHBOARD_URL.root(`/products/create`),
 	productEdit: (id = '') => DASHBOARD_URL.root(`/products/${id}`),
+	product: (id = '') => DASHBOARD_URL.root(`/products/${id}`),
 
 	categories: () => DASHBOARD_URL.root(`/categories`),
 	categoryCreate: () => DASHBOARD_URL.root(`/categories/create`),
