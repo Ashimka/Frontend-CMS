@@ -55,9 +55,9 @@ class ProductService {
 		return data
 	}
 
-	async create(data: IProductInput, storeId: string) {
+	async create(data: IProductInput) {
 		const { data: createdProduct } = await axiosWithAuth<IProduct[]>({
-			url: API_URL.products(`/${storeId}`),
+			url: API_URL.products(`/`),
 			method: 'POST',
 			data
 		})
