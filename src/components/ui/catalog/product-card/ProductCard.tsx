@@ -18,6 +18,7 @@ export function ProductCard({ product }: ProductCardProps) {
 		<div className={styles.card}>
 			<Link href={PUBLIC_URL.product(product.id)}>
 				<Image
+					priority={true}
 					src={product.images.split(',')[0]}
 					alt={product.title}
 					width={300}
