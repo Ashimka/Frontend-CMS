@@ -15,6 +15,15 @@ class ReviewService {
 		return createdReview
 	}
 
+	async getAll() {
+		const { data } = await axiosWithAuth<IReview[]>({
+			url: API_URL.reviews(`/`),
+			method: 'GET'
+		})
+
+		return data
+	}
+
 	async delete(id: string) {
 		const { data: deletedReview } = await axiosWithAuth<IReview>({
 			url: API_URL.reviews(`/${id}`),
