@@ -1,3 +1,5 @@
+'use client'
+
 import { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react'
 import Link from 'next/link'
@@ -11,16 +13,15 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui/Dropdown-menu'
 
-import { DASHBOARD_URL } from '@/config/url.config'
+import { DASHBOARD_URL, PUBLIC_URL } from '@/config/url.config'
 
-export interface IProductColumn {
+export interface ICategoryColumn {
 	id: string
+	createdAt: string
 	title: string
-	price: string
-	category: string
 }
 
-export const productColumns: ColumnDef<IProductColumn>[] = [
+export const categoryColumns: ColumnDef<ICategoryColumn>[] = [
 	{
 		accessorKey: 'title',
 		header: ({ column }) => {
@@ -30,35 +31,21 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
 					Название
-					<ArrowUpDown className='ml-2 size-4' />
+					<ArrowUpDown className='ml-2 h-4 w-4' />
 				</Button>
 			)
 		}
 	},
 	{
-		accessorKey: 'price',
+		accessorKey: 'createdAt',
 		header: ({ column }) => {
 			return (
 				<Button
 					variant='ghost'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
-					Цена
-					<ArrowUpDown className='ml-2 size-4' />
-				</Button>
-			)
-		}
-	},
-	{
-		accessorKey: 'category',
-		header: ({ column }) => {
-			return (
-				<Button
-					variant='ghost'
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
-					Категория
-					<ArrowUpDown className='ml-2 size-4' />
+					Дата создания
+					<ArrowUpDown className='ml-2 h-4 w-4' />
 				</Button>
 			)
 		}
@@ -69,19 +56,19 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 		cell: ({ row }) => (
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<Button variant='ghost' className='size-8 p-0'>
-						<MoreHorizontal className='size-4' />
+					<Button variant='ghost' className='h-8 w-8 p-0'>
+						<MoreHorizontal className='h-4 w-4' />
 					</Button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align='end'>
 					<DropdownMenuLabel>Действия</DropdownMenuLabel>
-					<Link href={DASHBOARD_URL.product(row.original.id)} target='_blank'>
+					<Link href={PUBLIC_URL.category(row.original.id)} target='_blank'>
 						<DropdownMenuItem>
 							<ExternalLink className='size-4 mr-2' />
-							Страница с продуктом
+							Страница с категорией
 						</DropdownMenuItem>
 					</Link>
-					<Link href={DASHBOARD_URL.productEdit(row.original.id)}>
+					<Link href={DASHBOARD_URL.categoryEdit(row.original.id)}>
 						<DropdownMenuItem>
 							<Pencil className='size-4 mr-2' />
 							Изменить

@@ -11,6 +11,7 @@ import {
 	SelectTrigger,
 	SelectValue
 } from '@/components/ui/Select'
+import { Textarea } from '@/components/ui/Textarea'
 import {
 	Form,
 	FormControl,
@@ -22,7 +23,6 @@ import {
 import { Input } from '@/components/ui/form-elements/Input'
 import { ImageUpload } from '@/components/ui/form-elements/image-upload/ImageUpload'
 import { ConfirmModal } from '@/components/ui/modals/ConfirmModal'
-import { Textarea } from '@/components/ui/Еextarea'
 
 import { useCreateProduct } from '@/hooks/queries/products/useCreateProduct'
 import { useDeleteProduct } from '@/hooks/queries/products/useDeleteProduct'

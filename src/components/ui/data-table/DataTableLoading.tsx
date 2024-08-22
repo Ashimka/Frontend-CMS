@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { Card, CardContent } from '../Card'
 import { Loader } from '../Loader'
-import { Skeleton } from '../skeleton'
+import { Skeleton } from '../Skeleton'
 
 import styles from './DataTable.module.scss'
 
