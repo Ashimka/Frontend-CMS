@@ -22,6 +22,7 @@ export function Explorer({ products }: ExplorerProps) {
 		queryFn: () => productService.getAll(searchTerm),
 		initialData: products
 	})
+
 	return (
 		<div className='my-6'>
 			<Catalog

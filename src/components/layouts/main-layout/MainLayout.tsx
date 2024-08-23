@@ -9,7 +9,7 @@ export function MainLayout({ children }: PropsWithChildren<unknown>) {
 		<div className={styles.wrapper}>
 			<div className={styles.layout}>
 				<Header />
-				<main>{children}</main>
+				<main className='min-h-svh'>{children}</main>
 				<Footer />
 			</div>
 		</div>
