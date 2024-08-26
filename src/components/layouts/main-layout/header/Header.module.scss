@@ -1,5 +1,5 @@
 .header {
-	@apply p-5 gap-x-4 h-full flex items-center bg-white border-b;
+	@apply p-5 gap-x-4 h-full flex items-center bg-amber-200 border-b;
 
 	> .search {
 		@apply ml-auto hidden w-[40%] lg:block;

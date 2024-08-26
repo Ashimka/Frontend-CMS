@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/Button'
@@ -25,14 +24,6 @@ export default function Auth() {
 	const { onSubmit, form, isPending } = useAuthForm(isReq)
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.left}>
-				<Image
-					src={'/images/auth.svg'}
-					alt='Super shop'
-					width={100}
-					height={100}
-				/>
-			</div>
 			<div className={styles.right}>
 				<Card className={styles.card}>
 					<CardHeader className={styles.header}>
@@ -45,14 +36,19 @@ export default function Auth() {
 						<Form {...form}>
 							<form onSubmit={form.handleSubmit(onSubmit)}>
 								<AuthFields form={form} isPending={isPending} isReq={isReq} />
-								<Button disabled={isPending}>Продолжить</Button>
+								<Button variant={'primary'} disabled={isPending}>
+									Продолжить
+								</Button>
 							</form>
 						</Form>
 						<Social />
 					</CardContent>
-					<CardFooter>
-						{isReq ? 'Есть аккаунт?' : 'Нет аккаунта'}
-						<button onClick={() => setIsReq(!isReq)}>
+					<CardFooter className='mt-3'>
+						{isReq ? 'Есть аккаунт?' : 'Нет аккаунта?'}
+						<button
+							className='ml-2 text-slate-500'
+							onClick={() => setIsReq(!isReq)}
+						>
 							{isReq ? 'Войти' : 'Создать'}
 						</button>
 					</CardFooter>

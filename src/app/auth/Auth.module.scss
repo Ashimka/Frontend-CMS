@@ -1,15 +1,11 @@
 .wrapper {
-	@apply min-h-screen grid grid-cols-1 lg:grid-cols-2;
-
-	> .left {
-		@apply h-full bg-blue-600 hidden lg:flex items-center justify-center;
-	}
+	@apply min-h-screen  flex items-center justify-center;
 
 	> .right {
 		@apply h-full flex flex-col items-center justify-center;
 
 		> .card {
-			@apply border-none p-6 flex flex-col items-center justify-center w-[380px];
+			@apply bg-orange-200 border-none p-6 flex flex-col items-center justify-center w-[380px];
 
 			> .header {
 				@apply text-center pb-5;

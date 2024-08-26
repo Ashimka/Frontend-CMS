@@ -14,7 +14,7 @@ import {
 
 import { cn } from '@/utils/clsx'
 
-import { Label } from './label'
+import { Label } from './Label'
 
 const Form = FormProvider
 

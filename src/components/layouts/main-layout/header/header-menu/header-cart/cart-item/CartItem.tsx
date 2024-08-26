@@ -23,6 +23,7 @@ export function CartItem({ item }: CartItemProps) {
 					src={item.product.images.split(',')[0]}
 					alt={item.product.title}
 					fill
+					sizes='auto'
 				/>
 			</Link>
 			<div className={styles.right}>

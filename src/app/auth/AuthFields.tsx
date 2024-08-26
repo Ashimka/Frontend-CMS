@@ -28,6 +28,7 @@ export function AuthFields({
 				<FormField
 					control={form.control}
 					name='name'
+					defaultValue=''
 					rules={{
 						required: 'Имя обязательно!'
 					}}
@@ -44,6 +45,7 @@ export function AuthFields({
 			<FormField
 				control={form.control}
 				name='email'
+				defaultValue=''
 				rules={{
 					required: 'email обязателен!',
 					pattern: {
@@ -68,6 +70,7 @@ export function AuthFields({
 			<FormField
 				control={form.control}
 				name='password'
+				defaultValue=''
 				rules={{
 					required: 'Пароль обязателен!',
 					minLength: {
