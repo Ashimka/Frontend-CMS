@@ -7,6 +7,7 @@ import './globals.scss'
 import Providers from './providers'
 
 export const metadata: Metadata = {
+	metadataBase: new URL('http://localhost:3000'),
 	title: {
 		absolute: SITE_NAME,
 		template: `%s | ${SITE_NAME}`

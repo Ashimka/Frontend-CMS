@@ -28,17 +28,17 @@ export function ProductReviews({ product }: ProductReviewsProps) {
 				<h1>Отзывы</h1>
 				{user && (
 					<ReviewModal>
-						<Button variant='ghost'>
+						<span className={styles.btn}>
 							<Plus />
 							Добавить отзыв
-						</Button>
+						</span>
 					</ReviewModal>
 				)}
 			</div>
 			<div className={styles.reviews}>
 				{product.reviews.length ? (
 					product.reviews.map(review => (
-						<div className={styles.review}>
+						<div className={styles.review} key={review.id}>
 							<div className={styles.header}>
 								<div className={styles.user}>
 									<Image

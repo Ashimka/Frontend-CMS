@@ -15,7 +15,7 @@ export function Catalog({
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
 				<div className={styles.info}>
-					<h1>{title}</h1>
+					<h2>{title}</h2>
 					{description && <p>{description}</p>}
 				</div>
 				{link && linkTitle && <Link href={link}>{linkTitle}</Link>}

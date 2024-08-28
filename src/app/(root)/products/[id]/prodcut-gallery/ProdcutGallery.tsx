@@ -24,26 +24,28 @@ export function ProdcutGallery({ product }: ProdcutGalleryProps) {
 				height={500}
 				className={styles.image}
 			/>
-			<div className={styles.gallery}>
-				{product.images.split(',').map((image, index) => (
-					<button
-						key={index}
-						onClick={() => setCurrentIndex(index)}
-						className={cn(
-							styles.item,
-							index === currentIndex ? 'border-black' : 'border-transparent'
-						)}
-					>
-						<Image
-							priority={true}
-							src={image}
-							alt={product.title}
-							width={100}
-							height={100}
-						/>
-					</button>
-				))}
-			</div>
+			{product.images.split(',').length > 1 && (
+				<div className={styles.gallery}>
+					{product.images.split(',').map((image, index) => (
+						<button
+							key={index}
+							onClick={() => setCurrentIndex(index)}
+							className={cn(
+								styles.item,
+								index === currentIndex ? 'border-black' : 'border-transparent'
+							)}
+						>
+							<Image
+								priority={true}
+								src={image}
+								alt={product.title}
+								width={100}
+								height={100}
+							/>
+						</button>
+					))}
+				</div>
+			)}
 		</div>
 	)
 }
