@@ -2,6 +2,6 @@
 	@apply flex items-center gap-x-3 hover:opacity-75 transition-opacity;
 
 	> div {
-		@apply text-2xl font-bold to-blue-600;
+		@apply hidden xl:block text-2xl font-bold;
 	}
 }

@@ -1,8 +1,14 @@
+import { ShoppingBag } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/Button'
 import { Heading } from '@/components/ui/Heading'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/Sheet'
+import {
+	Sheet,
+	SheetClose,
+	SheetContent,
+	SheetTrigger
+} from '@/components/ui/Sheet'
 
 import { PUBLIC_URL } from '@/config/url.config'
 
@@ -27,7 +33,7 @@ export function HeaderCart() {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button variant='ghost'>Корзина</Button>
+				<ShoppingBag className='cursor-pointer bg-inherit size-6 text-blue-800 hover:text-blue-600' />
 			</SheetTrigger>
 			<SheetContent className={styles.cart}>
 				<Heading title='Корзина заказа' className='text-xl' />
@@ -43,20 +49,19 @@ export function HeaderCart() {
 						<div className={styles.total}>
 							Итого к оплате: {formatPrice(total)}
 						</div>
-						<Button
-							className={styles.check_order}
-							onClick={handleClick}
-							variant='primary'
-							disabled={isLoadingCreate}
-						>
-							Подтвердить заказ
-						</Button>
+						<SheetClose asChild>
+							<Button
+								className={styles.check_order}
+								onClick={handleClick}
+								variant='primary'
+								disabled={isLoadingCreate}
+							>
+								Подтвердить заказ
+							</Button>
+						</SheetClose>
 					</>
 				) : null}
 			</SheetContent>
 		</Sheet>
 	)
-}
-function useCheckoutOrder(): { createPayment: any; isLoadingCreate: any } {
-	throw new Error('Function not implemented.')
 }

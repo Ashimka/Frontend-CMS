@@ -20,18 +20,23 @@ export function HeaderMenu() {
 		<div className={styles.header_menu}>
 			<HeaderCart />
 			<Link href={PUBLIC_URL.explorer()}>
-				<Button variant='ghost'>Каталог</Button>
+				<Button variant='ghost' className='text-l'>
+					Каталог
+				</Button>
 			</Link>
 			{isLoading ? (
 				<Loader size='sm' />
 			) : user ? (
 				<>
 					<Link href={PROFILE_URL.favorites()}>
-						<Button variant='ghost'>Избранное</Button>
+						<Button variant='ghost' className='text-l'>
+							Избранное
+						</Button>
 					</Link>
 
 					<Link href={PROFILE_URL.home()}>
 						<Image
+							priority={true}
 							src={user.avatar}
 							alt={user.name}
 							width={42}

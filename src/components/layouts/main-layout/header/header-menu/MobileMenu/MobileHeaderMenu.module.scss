@@ -1,0 +1,13 @@
+.wrapper {
+	@apply flex items-center justify-center gap-4;
+	> .image {
+		@apply rounded-full cursor-pointer;
+	}
+}
+
+.content {
+	@apply mt-10 flex flex-col gap-4;
+	> .link {
+		@apply py-1 text-lg font-medium text-zinc-800 hover:text-blue-800;
+	}
+}
