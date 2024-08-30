@@ -10,6 +10,7 @@ import { SearchInput } from './search-input/SearchInput'
 
 export function Header() {
 	const isMedia768 = useMediaQuery(768)
+
 	return (
 		<header className={styles.header}>
 			<Logo />

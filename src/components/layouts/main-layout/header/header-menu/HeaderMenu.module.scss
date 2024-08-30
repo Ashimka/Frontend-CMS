@@ -1,5 +1,5 @@
 .header_menu {
-	@apply hidden items-center gap-x-2 ml-auto lg:flex;
+	@apply hidden items-center gap-x-2 ml-auto md:flex;
 
 	.avatar {
 		@apply rounded-full;
