@@ -28,7 +28,7 @@ export const useCheckOrder = () => {
 				}))
 			}),
 		onSuccess() {
-			router.push(PROFILE_URL.home())
+			router.push(PROFILE_URL.thanks())
 			reset()
 		},
 		onError() {

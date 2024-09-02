@@ -6,7 +6,7 @@
 	}
 
 	> .title {
-		@apply mt-4 font-semibold text-xl text-gray-700 line-clamp-1;
+		@apply mt-4 font-semibold text-xl hyphens-auto text-gray-700 line-clamp-1;
 	}
 
 	> .category {

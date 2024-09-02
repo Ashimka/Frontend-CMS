@@ -2,17 +2,21 @@
 
 import { useMutation } from '@tanstack/react-query'
 import { LogOut } from 'lucide-react'
+import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 import { Button } from '@/components/ui/Button'
 import { DataTable } from '@/components/ui/data-table/DataTable'
 
+import { DASHBOARD_URL } from '@/config/url.config'
+
 import { useProfile } from '@/hooks/useProfile'
 
 import { saveTokenStorage } from '@/services/auth/auth-token.serice'
 import { authService } from '@/services/auth/auth.service'
 
+import { EnumRole } from '@/shared/types/jwt.interface'
 import { EnumOrderStatus } from '@/shared/types/order.interface'
 
 import { formatDate } from '@/utils/date/format-date'
@@ -52,6 +56,11 @@ export function Profile() {
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
 				<h1>Ваши заказы</h1>
+				{user.role === EnumRole.ADMIN && (
+					<Link href={DASHBOARD_URL.home()} className={styles.admin_link}>
+						Админ панель
+					</Link>
+				)}
 				<Button variant='ghost' onClick={() => logout()}>
 					<LogOut />
 					Выйти

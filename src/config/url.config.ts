@@ -15,7 +15,8 @@ export const PROFILE_URL = {
 	root: (url = '') => `/profile${url ? url : ''}`,
 
 	home: () => PROFILE_URL.root('/'),
-	favorites: () => PROFILE_URL.root('/favorites')
+	favorites: () => PROFILE_URL.root('/favorites'),
+	thanks: () => PROFILE_URL.root('/thanks')
 }
 
 export const DASHBOARD_URL = {
