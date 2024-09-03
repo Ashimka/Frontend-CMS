@@ -52,7 +52,7 @@ export function DataTable<TData, TValue>({
 	})
 
 	return (
-		<div>
+		<>
 			{filterKey && (
 				<div className={styles.search}>
 					<Input
@@ -117,6 +117,6 @@ export function DataTable<TData, TValue>({
 					</TableBody>
 				</Table>
 			</div>
-		</div>
+		</>
 	)
 }

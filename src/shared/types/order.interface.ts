@@ -2,8 +2,8 @@ import { ICartItem } from './cart.interface'
 import { IUser } from './user.interface'
 
 export enum EnumOrderStatus {
-	PENDING = 'Pending',
-	PAYED = 'Payed'
+	PENDING = 'PENDING',
+	PAYED = 'PAYED'
 }
 
 export interface IOrder {

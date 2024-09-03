@@ -17,12 +17,12 @@ export function ProdcutGallery({ product }: ProdcutGalleryProps) {
 	return (
 		<div>
 			<Image
+				className={styles.image}
 				priority={true}
 				src={product.images.split(',')[currentIndex]}
 				alt={product.title}
 				width={500}
 				height={500}
-				className={styles.image}
 			/>
 			{product.images.split(',').length > 1 && (
 				<div className={styles.gallery}>

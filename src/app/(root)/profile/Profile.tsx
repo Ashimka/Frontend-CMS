@@ -52,6 +52,7 @@ export function Profile() {
 		status: order.status === EnumOrderStatus.PENDING ? 'В ожидании' : 'Оплачен',
 		total: formatPrice(order.total)
 	}))
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
