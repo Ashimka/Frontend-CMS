@@ -30,8 +30,8 @@ export default function Auth() {
 						<CardTitle>{isReq ? 'Регистрация' : 'Вход'}</CardTitle>
 						<CardDescription>
 							{isReq ? 'Зарегистрироваться через:' : 'Войти через:'}
-							<Social />
 						</CardDescription>
+						<Social />
 					</CardHeader>
 					<CardContent className={styles.content}>
 						<Form {...form}>
