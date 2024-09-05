@@ -27,9 +27,10 @@ export default function Auth() {
 			<div className={styles.right}>
 				<Card className={styles.card}>
 					<CardHeader className={styles.header}>
-						<CardTitle>{isReq ? 'Создать аккаунт' : 'Войти'}</CardTitle>
+						<CardTitle>{isReq ? 'Регистрация' : 'Вход'}</CardTitle>
 						<CardDescription>
-							Войдите или зарегистрируйтеь, для заказа на сайте
+							{isReq ? 'Зарегистрироваться через:' : 'Войти через:'}
+							<Social />
 						</CardDescription>
 					</CardHeader>
 					<CardContent className={styles.content}>
@@ -41,7 +42,6 @@ export default function Auth() {
 								</Button>
 							</form>
 						</Form>
-						<Social />
 					</CardContent>
 					<CardFooter className='mt-3'>
 						{isReq ? 'Есть аккаунт?' : 'Нет аккаунта?'}

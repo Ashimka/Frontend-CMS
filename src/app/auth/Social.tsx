@@ -1,9 +1,7 @@
 'use client'
 
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { FaYandex } from 'react-icons/fa'
-
-import { Button } from '@/components/ui/Button'
 
 import { SERVER_URL } from '@/config/api.config'
 
@@ -13,13 +11,22 @@ export function Social() {
 	const router = useRouter()
 	return (
 		<div className={styles.social}>
-			<Button
-				variant='outline'
+			<Image
+				src={'/images/vk.svg'}
+				width={24}
+				height={24}
+				alt='logo vk'
+				className={styles.icon}
+				onClick={() => router.push(`${SERVER_URL}/auth/vk`)}
+			/>
+			<Image
+				src={'/images/yandex.svg'}
+				width={24}
+				height={24}
+				alt='logo yandex'
+				className={styles.icon}
 				onClick={() => router.push(`${SERVER_URL}/auth/yandex`)}
-			>
-				<FaYandex color='#FC3F1D' />
-				Продолжить через Яндекс
-			</Button>
+			/>
 		</div>
 	)
 }

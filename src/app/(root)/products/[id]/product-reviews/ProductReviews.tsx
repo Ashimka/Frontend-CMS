@@ -2,7 +2,6 @@ import { Plus, Trash } from 'lucide-react'
 import Image from 'next/image'
 import { Rating } from 'react-simple-star-rating'
 
-import { Button } from '@/components/ui/Button'
 import { ConfirmModal } from '@/components/ui/modals/ConfirmModal'
 import { ReviewModal } from '@/components/ui/modals/ReviewModal'
 

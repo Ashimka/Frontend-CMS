@@ -14,6 +14,13 @@
 					@apply pb-1 text-3xl font-bold;
 				}
 			}
+			.social {
+				@apply flex justify-center items-center gap-7 mt-5;
+
+				> .icon {
+					@apply w-10 cursor-pointer;
+				}
+			}
 
 			> .content {
 				@apply p-0 w-full;
@@ -23,18 +30,6 @@
 
 					button {
 						@apply w-full;
-					}
-				}
-
-				> .social {
-					@apply space-y-3 w-full mt-5;
-
-					> button {
-						@apply w-full;
-
-						> svg {
-							@apply size-5 mr-2;
-						}
 					}
 				}
 			}
@@ -48,4 +43,3 @@
 		}
 	}
 }
-// 3.59

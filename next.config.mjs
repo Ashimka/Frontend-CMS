@@ -11,6 +11,10 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'avatars.yandex.net'
+			},
+			{
+				protocol: 'https',
+				hostname: 'sun60-1.userapi.com'
 			}
 		]
 	},
