@@ -1,7 +1,7 @@
 .logo {
 	@apply flex items-center gap-x-3 hover:opacity-75 transition-opacity;
 
-	> div {
+	> span {
 		@apply hidden xl:block text-2xl font-bold;
 	}
 }

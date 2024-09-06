@@ -1,3 +1,5 @@
+import { IProfileUser } from './user.interface'
+
 export interface IMainStatistics {
 	id: number
 	name: string
@@ -15,6 +17,7 @@ export interface ILastUsers {
 	email: string
 	avatar: string
 	total: number
+	profile?: IProfileUser
 }
 
 export interface IMiddleStatistics {

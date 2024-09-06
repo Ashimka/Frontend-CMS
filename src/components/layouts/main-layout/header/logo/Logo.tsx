@@ -17,7 +17,7 @@ export function Logo() {
 				height={35}
 				priority
 			/>
-			<div>{SITE_NAME}</div>
+			<span>{SITE_NAME}</span>
 		</Link>
 	)
 }

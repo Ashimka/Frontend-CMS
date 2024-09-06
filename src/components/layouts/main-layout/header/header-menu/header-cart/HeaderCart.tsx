@@ -30,10 +30,19 @@ export function HeaderCart() {
 	const handleClick = () => {
 		user ? createOrder() : router.push(PUBLIC_URL.auth())
 	}
+	const countProducts = items.reduce((acc, item) => {
+		return acc + item.quantity
+	}, 0)
+
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<ShoppingBag className='cursor-pointer bg-inherit size-6 text-blue-800 hover:text-blue-600' />
+				<div className='relative'>
+					<span className='px-1 py-0 rounded-lg text-sm absolute bottom-4 left-6 bg-red-500 text-white'>
+						{countProducts}
+					</span>
+					<ShoppingBag className='cursor-pointer bg-inherit size-6 text-blue-800 hover:text-blue-600' />
+				</div>
 			</SheetTrigger>
 			<SheetContent className={styles.cart}>
 				<Heading title='Корзина заказа' className='text-xl' />

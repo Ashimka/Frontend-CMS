@@ -19,19 +19,21 @@ export function HeaderMenu() {
 	return (
 		<div className={styles.header_menu}>
 			<HeaderCart />
-			<Link href={PUBLIC_URL.explorer()}>
-				<Button variant='ghost' className='text-l'>
-					Каталог
-				</Button>
+			<Link
+				href={PUBLIC_URL.explorer()}
+				className='px-2 py-1 rounded-lg hover:bg-blue-100'
+			>
+				Каталог
 			</Link>
 			{isLoading ? (
 				<Loader size='sm' />
 			) : user ? (
 				<>
-					<Link href={PROFILE_URL.favorites()}>
-						<Button variant='ghost' className='text-l'>
-							Избранное
-						</Button>
+					<Link
+						href={PROFILE_URL.favorites()}
+						className='px-2 py-1 rounded-lg hover:bg-blue-100'
+					>
+						Избранное
 					</Link>
 
 					<Link href={PROFILE_URL.home()}>

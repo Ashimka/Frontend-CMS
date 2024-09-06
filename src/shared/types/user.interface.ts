@@ -11,3 +11,10 @@ export interface IUser {
 	favorites: IProduct[]
 	orders: IOrder[]
 }
+export interface IProfileUser {
+	id: string
+	address: string
+	firstName: string
+	lastName: string
+	phone: string
+}

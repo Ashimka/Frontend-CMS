@@ -2,9 +2,8 @@ import { Menu } from 'lucide-react'
 
 import {
 	Sheet,
+	SheetClose,
 	SheetContent,
-	SheetDescription,
-	SheetTitle,
 	SheetTrigger
 } from '@/components/ui/Sheet'
 
@@ -14,14 +13,12 @@ export function MobileSidebar() {
 	return (
 		<Sheet>
 			<SheetTrigger className='lg:hidden pr-4 hover:opacity-75 transition'>
-				<SheetTitle>
-					<Menu />
-				</SheetTitle>
+				<Menu />
 			</SheetTrigger>
 			<SheetContent side='left' className='p-0 bg-white'>
-				<SheetDescription>
+				<SheetClose>
 					<Sidebar />
-				</SheetDescription>
+				</SheetClose>
 			</SheetContent>
 		</Sheet>
 	)

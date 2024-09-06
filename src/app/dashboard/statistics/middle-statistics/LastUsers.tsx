@@ -26,12 +26,20 @@ export function LastUsers({ data }: LastUsersProps) {
 								<div className={styles.user} key={user.id}>
 									<Image
 										src={user.avatar}
-										alt={user.name}
+										alt={
+											user.name === 'Не указано'
+												? `${user.profile?.firstName}  ${user.profile?.lastName}`
+												: user.name
+										}
 										width={40}
 										height={40}
 									/>
 									<div className={styles.info}>
-										<p className={styles.name}>{user.name}</p>
+										<p className={styles.name}>
+											{user.name === 'Не указано'
+												? `${user.profile?.firstName}  ${user.profile?.lastName}`
+												: user.name}
+										</p>
 										<p>{user.email}</p>
 									</div>
 									<div className={styles.total}>
