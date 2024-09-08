@@ -10,6 +10,7 @@ export interface IUser {
 	role: EnumRole
 	favorites: IProduct[]
 	orders: IOrder[]
+	profile: IProfileUser
 }
 export interface IProfileUser {
 	id: string

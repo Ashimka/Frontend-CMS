@@ -1,15 +1,14 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
-import { LogOut } from 'lucide-react'
+import { LogOut, Settings2 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
-import { Button } from '@/components/ui/Button'
 import { DataTable } from '@/components/ui/data-table/DataTable'
 
-import { DASHBOARD_URL } from '@/config/url.config'
+import { DASHBOARD_URL, PROFILE_URL } from '@/config/url.config'
 
 import { useProfile } from '@/hooks/useProfile'
 
@@ -56,17 +55,19 @@ export function Profile() {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
-				<h1>Ваши заказы</h1>
 				{user.role === EnumRole.ADMIN && (
-					<Link href={DASHBOARD_URL.home()} className={styles.admin_link}>
+					<Link href={DASHBOARD_URL.home()} className={styles.item_link}>
 						Админ панель
 					</Link>
 				)}
-				<Button variant='ghost' onClick={() => logout()}>
+				<Link href={PROFILE_URL.settings()} className={styles.item_link}>
+					<Settings2 />
+				</Link>
+				<button onClick={() => logout()} className={styles.item_link}>
 					<LogOut />
-					Выйти
-				</Button>
+				</button>
 			</div>
+			<h2>Ваши заказы</h2>
 			<DataTable columns={orderColumns} data={formattedOrders} />
 		</div>
 	)

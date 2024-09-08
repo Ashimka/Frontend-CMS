@@ -2,17 +2,17 @@
 	@apply my-6;
 
 	> .header {
-		@apply flex items-center justify-between mb-4;
+		@apply flex items-center justify-end gap-4 mb-4;
 
-		> h1 {
-			@apply text-2xl font-bold;
-		}
-		.admin_link {
-			@apply px-4 py-2 rounded-sm hover:bg-blue-100;
+		.item_link {
+			@apply py-1 px-2  rounded-sm hover:bg-indigo-400 hover:text-white;
 		}
 
 		svg {
-			@apply size-4 mr-2;
+			@apply size-5;
 		}
+	}
+	> h2 {
+		@apply text-2xl font-bold;
 	}
 }
