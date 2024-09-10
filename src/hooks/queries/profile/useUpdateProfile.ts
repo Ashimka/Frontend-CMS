@@ -6,28 +6,28 @@ import { userService } from '@/services/user.service'
 
 import { IProfileUser } from '@/shared/types/user.interface'
 
-export const useCreateProfile = () => {
+export const useUpdateProfile = () => {
 	const queryClient = useQueryClient()
 
-	const { mutate: createPofile, isPending: isLoadingCreate } = useMutation({
-		mutationKey: ['create profile'],
-		mutationFn: (data: IProfileUser) => userService.createProfile(data),
+	const { mutate: updateProfile, isPending: isLoadingUpdate } = useMutation({
+		mutationKey: ['update profile'],
+		mutationFn: (data: IProfileUser) => userService.updateProfileUser(data),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: ['get profile user for profile page']
 			})
-			toast.success('Данные добавлены')
+			toast.success('Данные изменены')
 		},
 		onError() {
-			toast.error('Неудалось добавить данные')
+			toast.error('Ошибка при изменении')
 		}
 	})
 
 	return useMemo(
 		() => ({
-			createPofile,
-			isLoadingCreate
+			updateProfile,
+			isLoadingUpdate
 		}),
-		[createPofile, isLoadingCreate]
+		[updateProfile, isLoadingUpdate]
 	)
 }

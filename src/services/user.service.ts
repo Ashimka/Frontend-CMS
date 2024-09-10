@@ -30,6 +30,15 @@ class UserService {
 
 		return createProfile
 	}
+
+	async updateProfileUser(data: IProfileUser) {
+		const { data: updateProfile } = await axiosWithAuth<IProfileUser>({
+			url: API_URL.users('/profile'),
+			method: 'PATCH',
+			data
+		})
+		return updateProfile
+	}
 }
 
 export const userService = new UserService()

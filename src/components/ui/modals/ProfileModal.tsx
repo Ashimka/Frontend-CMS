@@ -53,6 +53,7 @@ export function ProfileModal({ children }: PropsWithChildren) {
 						<FormField
 							control={form.control}
 							name='firstName'
+							defaultValue=''
 							rules={{
 								required: 'Ваше имя'
 							}}
@@ -72,6 +73,7 @@ export function ProfileModal({ children }: PropsWithChildren) {
 						<FormField
 							control={form.control}
 							name='lastName'
+							defaultValue=''
 							rules={{
 								required: 'Ваша фамилия'
 							}}
@@ -91,6 +93,7 @@ export function ProfileModal({ children }: PropsWithChildren) {
 						<FormField
 							control={form.control}
 							name='address'
+							defaultValue=''
 							rules={{
 								required: 'Адресс куда доставить'
 							}}
@@ -110,6 +113,7 @@ export function ProfileModal({ children }: PropsWithChildren) {
 						<FormField
 							control={form.control}
 							name='phone'
+							defaultValue=''
 							rules={{
 								required: 'Телефон для курьера'
 							}}
