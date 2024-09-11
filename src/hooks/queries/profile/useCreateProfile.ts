@@ -14,7 +14,7 @@ export const useCreateProfile = () => {
 		mutationFn: (data: IProfileUser) => userService.createProfile(data),
 		onSuccess() {
 			queryClient.invalidateQueries({
-				queryKey: ['get profile user for profile page']
+				queryKey: ['get profile user']
 			})
 			toast.success('Данные добавлены')
 		},

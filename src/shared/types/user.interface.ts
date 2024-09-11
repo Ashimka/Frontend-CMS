@@ -13,7 +13,7 @@ export interface IUser {
 	profile: IProfileUser
 }
 export interface IProfileUser {
-	id: string
+	id?: string
 	address: string
 	firstName: string
 	lastName: string

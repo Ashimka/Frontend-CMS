@@ -14,7 +14,7 @@ export const useUpdateProfile = () => {
 		mutationFn: (data: IProfileUser) => userService.updateProfileUser(data),
 		onSuccess() {
 			queryClient.invalidateQueries({
-				queryKey: ['get profile user for profile page']
+				queryKey: ['profile']
 			})
 			toast.success('Данные изменены')
 		},
