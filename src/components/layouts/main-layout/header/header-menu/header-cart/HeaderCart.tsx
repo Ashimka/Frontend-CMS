@@ -38,9 +38,11 @@ export function HeaderCart() {
 		<Sheet>
 			<SheetTrigger asChild>
 				<div className='relative'>
-					<span className='px-1 py-0 rounded-lg text-sm absolute bottom-4 left-6 bg-red-500 text-white'>
-						{countProducts}
-					</span>
+					{countProducts > 0 && (
+						<span className='px-1 py-0 rounded-lg text-sm absolute bottom-4 left-6 bg-red-500 text-white'>
+							{countProducts}
+						</span>
+					)}
 					<ShoppingBag className='cursor-pointer bg-inherit size-6 text-blue-800 hover:text-blue-600' />
 				</div>
 			</SheetTrigger>

@@ -21,9 +21,9 @@ export const PROFILE_URL = {
 }
 
 export const DASHBOARD_URL = {
-	root: (url = '') => `/dashboard/${url ? url : ''}`,
+	root: (url = '') => `/dashboard${url ? url : ''}`,
 
-	home: () => DASHBOARD_URL.root('/'),
+	home: () => DASHBOARD_URL.root(''),
 	favorites: () => DASHBOARD_URL.root('/favorites'),
 
 	products: () => DASHBOARD_URL.root(`/products`),
