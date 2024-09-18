@@ -5,7 +5,7 @@ import { SERVER_URL } from '@/config/api.config'
 import {
 	getAccessToken,
 	removeTokenFromStorage
-} from '@/services/auth/auth-token.serice'
+} from '@/services/auth/auth-token.service'
 import { authService } from '@/services/auth/auth.service'
 
 import { errorCatch, getContentType } from './api.hepler'

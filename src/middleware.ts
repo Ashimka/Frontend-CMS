@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
 import { PUBLIC_URL } from './config/url.config'
-import { EnumToken } from './services/auth/auth-token.serice'
+import { EnumToken } from './services/auth/auth-token.service'
 
 export async function middleware(request: NextRequest) {
 	const refreshToken = request.cookies.get(EnumToken.REFRESH_TOKEN)?.value

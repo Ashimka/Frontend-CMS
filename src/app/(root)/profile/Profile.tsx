@@ -12,7 +12,7 @@ import { DASHBOARD_URL, PROFILE_URL } from '@/config/url.config'
 
 import { useProfile } from '@/hooks/useProfile'
 
-import { saveTokenStorage } from '@/services/auth/auth-token.serice'
+import { saveTokenStorage } from '@/services/auth/auth-token.service'
 import { authService } from '@/services/auth/auth.service'
 
 import { EnumRole } from '@/shared/types/jwt.interface'

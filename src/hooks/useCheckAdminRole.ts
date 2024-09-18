@@ -7,7 +7,7 @@ type Props = {
 	allowedRoles: string[]
 }
 
-export const adminRolle = ({ accessToken, allowedRoles }: Props) => {
+export const isAdminRolle = ({ accessToken, allowedRoles }: Props) => {
 	const decoded: IJwtPayload | undefined = accessToken
 		? jwtDecode(accessToken)
 		: undefined

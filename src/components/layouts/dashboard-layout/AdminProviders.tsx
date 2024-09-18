@@ -5,15 +5,15 @@ import { PropsWithChildren, useEffect } from 'react'
 
 import { PUBLIC_URL } from '@/config/url.config'
 
-import { adminRolle } from '@/hooks/useCheckAdminRole'
+import { isAdminRolle } from '@/hooks/useCheckAdminRole'
 
-import { getAccessToken } from '@/services/auth/auth-token.serice'
+import { getAccessToken } from '@/services/auth/auth-token.service'
 
 const allowedRoles = ['ADMIN']
 export function AdminProviders({ children }: PropsWithChildren<unknown>) {
 	const accessToken = getAccessToken()
 	const router = useRouter()
-	const isAdmin = adminRolle({ accessToken, allowedRoles })
+	const isAdmin = isAdminRolle({ accessToken, allowedRoles })
 
 	useEffect(() => {
 		if (accessToken && !isAdmin) {
