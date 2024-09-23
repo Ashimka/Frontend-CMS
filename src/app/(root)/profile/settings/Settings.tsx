@@ -14,7 +14,9 @@ export default function Settings() {
 			<h2 className={styles.title}>Мои данные</h2>
 			<div className={styles.modal_btn}>
 				<ProfileModal>
-					<span className={styles.span_btn}>Изменить</span>
+					<span className={styles.span_btn}>
+						{user?.profile ? 'Изменить' : 'Добавить'}
+					</span>
 				</ProfileModal>
 			</div>
 			{user?.profile && (
