@@ -1,4 +1,4 @@
-import { axiosClassic } from '@/api/api.interceptors'
+import { axiosClassic, axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api.config'
 
@@ -34,14 +34,12 @@ class AuthService {
 	}
 
 	async logout() {
-		const response = await axiosClassic<IAuthResponse>({
+		const response = await axiosWithAuth<boolean>({
 			url: API_URL.auth('logout'),
 			method: 'POST'
 		})
 
-		if (response.data) {
-			removeTokenFromStorage()
-		}
+		if (response.data) removeTokenFromStorage()
 
 		return response
 	}
