@@ -1,10 +1,13 @@
 export const getReviewWordWithEnding = (reviewCount: number) => {
-	switch (reviewCount) {
-		case 1 || 21 || 31:
-			return `${reviewCount} отзыв`
-		case 2 || 3 || 4 || 22 || 23 || 24 || 34:
-			return `${reviewCount} отзыва`
+	const reviewEnding = ['отзыв', 'отзыва', 'отзывов']
+
+	const result = new Intl.PluralRules('ru-Ru').select(reviewCount)
+	switch (result) {
+		case 'one':
+			return `${reviewCount} ${reviewEnding[0]}`
+		case 'few':
+			return `${reviewCount} ${reviewEnding[1]}`
 		default:
-			return `${reviewCount} отзывов`
+			return `${reviewCount} ${reviewEnding[2]}`
 	}
 }

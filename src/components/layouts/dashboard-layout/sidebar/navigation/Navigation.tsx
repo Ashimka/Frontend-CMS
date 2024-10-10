@@ -8,7 +8,7 @@ import { MenuItem } from './MenuItem'
 import styles from './Navigation.module.scss'
 import { IMenuItem } from './menu.interface'
 
-export function Navigation() {
+export function Navigation({ ...restProps }) {
 	const routes: IMenuItem[] = [
 		{
 			icon: BarChart,
@@ -40,7 +40,7 @@ export function Navigation() {
 		<div className={styles.wrapper}>
 			<div className={styles.navigation}>
 				{routes.map(route => (
-					<MenuItem key={route.value} route={route} />
+					<MenuItem key={route.value} route={route} {...restProps} />
 				))}
 			</div>
 		</div>

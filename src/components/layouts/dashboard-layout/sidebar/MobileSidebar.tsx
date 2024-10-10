@@ -16,7 +16,7 @@ export function MobileSidebar() {
 				<Menu />
 			</SheetTrigger>
 			<SheetContent side='left' className='p-0 bg-white'>
-				<SheetClose>
+				<SheetClose asChild>
 					<Sidebar />
 				</SheetClose>
 			</SheetContent>

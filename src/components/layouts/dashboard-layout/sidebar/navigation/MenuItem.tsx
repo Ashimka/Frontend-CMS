@@ -8,7 +8,7 @@ import { cn } from '@/utils/clsx'
 import styles from './Navigation.module.scss'
 import { MenuItemProps } from './menu.interface'
 
-export function MenuItem({ route }: MenuItemProps) {
+export function MenuItem({ route, ...restProps }: MenuItemProps) {
 	const pathname = usePathname()
 
 	return (
@@ -17,6 +17,7 @@ export function MenuItem({ route }: MenuItemProps) {
 			className={cn(styles.route, {
 				[styles.active]: pathname === route.link
 			})}
+			{...restProps}
 		>
 			<route.icon />
 			{route.value}
