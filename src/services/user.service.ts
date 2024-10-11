@@ -14,6 +14,15 @@ class UserService {
 		return data
 	}
 
+	async getAllUsers() {
+		const { data } = await axiosWithAuth<IUser[]>({
+			url: API_URL.dashboard('/settings/users'),
+			method: 'GET'
+		})
+
+		return data
+	}
+
 	async toggleFavorite(productId: string) {
 		return axiosWithAuth<IUser>({
 			url: API_URL.users(`/profile/favorites/${productId}`),

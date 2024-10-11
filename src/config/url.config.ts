@@ -37,5 +37,7 @@ export const DASHBOARD_URL = {
 
 	reviews: () => DASHBOARD_URL.root(`/reviews`),
 
-	settings: () => DASHBOARD_URL.root(`/settings`)
+	settings: () => DASHBOARD_URL.root(`/settings`),
+	settingsUsers: () => DASHBOARD_URL.root(`/settings/users`),
+	settingsOneUser: (id = '') => DASHBOARD_URL.root(`/settings/users/${id}`)
 }

@@ -8,6 +8,7 @@ export interface IUser {
 	email: string
 	avatar: string
 	role: EnumRole
+	createdAt: string
 	favorites: IProduct[]
 	orders: IOrder[]
 	profile: IProfileUser

@@ -1,3 +1,7 @@
+'use client'
+
+import Link from 'next/link'
+
 import { Button } from '@/components/ui/Button'
 import {
 	Card,
@@ -7,6 +11,8 @@ import {
 	CardTitle
 } from '@/components/ui/Card'
 import { Heading } from '@/components/ui/Heading'
+
+import { DASHBOARD_URL } from '@/config/url.config'
 
 import styles from './Settings.module.scss'
 
@@ -21,9 +27,11 @@ const Settings = () => {
 						<CardDescription>Все пользователи и сотрудники</CardDescription>
 					</CardHeader>
 					<CardContent>
-						<Button variant='primary' className={styles.btn}>
-							Подробнее
-						</Button>
+						<Link href={DASHBOARD_URL.settingsUsers()}>
+							<Button variant='primary' className={styles.btn}>
+								Подробнее
+							</Button>
+						</Link>
 					</CardContent>
 				</Card>
 				<Card className='border-indigo-500/50'>
