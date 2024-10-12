@@ -25,11 +25,12 @@ export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 	return (
 		<div>
 			<div className={styles.image_container}>
-				{imageValues?.map(url => (
-					<div key={url} className={styles.image_wrapper}>
-						<Image src={url} alt='Картинка' fill sizes='auto' />
-					</div>
-				))}
+				{imageValues[0] !== '' &&
+					imageValues?.map(url => (
+						<div key={url} className={styles.image_wrapper}>
+							<Image src={url} alt='Картинка' fill sizes='auto' />
+						</div>
+					))}
 			</div>
 			<Button
 				type='button'

@@ -20,3 +20,5 @@ export interface IProfileUser {
 	lastName: string
 	phone: string
 }
+
+export interface IEditUser extends Partial<IUser> {}

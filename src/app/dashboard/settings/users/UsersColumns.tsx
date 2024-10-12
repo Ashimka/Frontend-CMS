@@ -2,9 +2,12 @@
 
 import { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 import { Button } from '@/components/ui/Button'
+
+import { DASHBOARD_URL } from '@/config/url.config'
 
 export interface IUserColumn {
 	id: string
@@ -70,5 +73,17 @@ export const usersColumns: ColumnDef<IUserColumn>[] = [
 				</Button>
 			)
 		}
+	},
+	{
+		accessorKey: 'actions',
+		header: 'Действия',
+		cell: ({ row }) => (
+			<Link
+				href={DASHBOARD_URL.settingsOneUser(row.original.id)}
+				className='hover:text-indigo-500'
+			>
+				Редактировать
+			</Link>
+		)
 	}
 ]

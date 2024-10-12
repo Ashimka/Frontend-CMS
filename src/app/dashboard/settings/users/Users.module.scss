@@ -1,0 +1,11 @@
+.wrapper {
+	@apply p-6;
+
+	> form {
+		@apply mt-5;
+
+		> .fields {
+			@apply flex flex-col gap-5 mb-5;
+		}
+	}
+}
