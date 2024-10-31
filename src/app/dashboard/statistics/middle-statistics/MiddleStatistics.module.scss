@@ -1,5 +1,5 @@
 .middle {
-	@apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7 mt-6;
+	@apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6 xl:grid-cols-7 mt-6;
 
 	.header {
 		@apply flex flex-col items-stretch space-y-0 border-b p-4;
