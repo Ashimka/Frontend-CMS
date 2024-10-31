@@ -33,11 +33,6 @@ export function SettingsForm({ profile, onClose }: ProfileFormProps) {
 			lastName: profile?.lastName || '',
 			address: profile?.address || '',
 			phone: profile?.phone || ''
-		} || {
-			firstName: '',
-			lastName: '',
-			address: '',
-			phone: ''
 		}
 	})
 
@@ -53,7 +48,10 @@ export function SettingsForm({ profile, onClose }: ProfileFormProps) {
 	return (
 		<>
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)}>
+				<form
+					onSubmit={form.handleSubmit(onSubmit)}
+					className='flex flex-col gap-4'
+				>
 					<FormField
 						control={form.control}
 						name='firstName'

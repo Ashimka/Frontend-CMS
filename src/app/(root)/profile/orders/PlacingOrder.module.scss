@@ -1,0 +1,59 @@
+.wrapper {
+	@apply py-4;
+
+	.title {
+		@apply text-xl font-semibold mb-4;
+	}
+	.sub_title {
+		@apply text-lg font-medium text-slate-600 mb-3;
+	}
+
+	.content {
+		@apply flex flex-col gap-7 sm:flex-row;
+		.products {
+			@apply flex flex-col gap-6 sm:w-3/5;
+
+			.cols {
+				@apply p-3 bg-indigo-100 rounded-lg flex justify-between gap-3;
+
+				.image {
+					@apply w-2/6 flex justify-center items-center;
+				}
+				.description {
+					@apply w-3/6 flex flex-col gap-2;
+					.product {
+						@apply text-lg font-medium;
+					}
+					.category {
+						@apply text-lg text-slate-500;
+					}
+					.quantity {
+						@apply text-sm text-slate-500;
+					}
+				}
+				.price {
+					@apply w-1/6 my-auto font-medium;
+				}
+			}
+		}
+		.delivery {
+			@apply p-3 border-2 border-solid border-indigo-400 rounded-sm flex flex-col sm:self-start gap-6 sm:w-2/5;
+
+			> h3 {
+				@apply font-medium;
+			}
+			> h6 {
+				@apply font-light text-sm;
+			}
+			.address {
+				@apply p-1;
+			}
+			.total_cost {
+				@apply text-lg font-medium;
+			}
+		}
+	}
+	.footer {
+		@apply mt-5 px-3;
+	}
+}

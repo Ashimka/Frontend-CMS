@@ -3,10 +3,10 @@ import { Button } from '@/components/ui/Button'
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 
-import { IProduct } from '@/shared/types/product.interface'
+import { IProduct, IProductToCart } from '@/shared/types/product.interface'
 
 interface AddToCartButtonProps {
-	product: IProduct
+	product: IProductToCart
 }
 
 export function AddToCartButton({ product }: AddToCartButtonProps) {
@@ -26,7 +26,16 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
 				currentElement
 					? removeFromCart({ id: currentElement.id })
 					: addToCart({
-							product,
+							product: {
+								id: product.id,
+								category: {
+									id: product.category.id,
+									title: product.category.title
+								},
+								title: product.title,
+								images: product.images,
+								price: product.price
+							},
 							quantity: 1,
 							price: product.price
 						})

@@ -10,9 +10,8 @@ import {
 	SheetTrigger
 } from '@/components/ui/Sheet'
 
-import { PUBLIC_URL } from '@/config/url.config'
+import { PROFILE_URL, PUBLIC_URL } from '@/config/url.config'
 
-import { useCheckOrder } from '@/hooks/order/useCheckOrder'
 import { useCart } from '@/hooks/useCart'
 import { useProfile } from '@/hooks/useProfile'
 
@@ -25,10 +24,9 @@ export function HeaderCart() {
 	const router = useRouter()
 	const { user } = useProfile()
 	const { items, total } = useCart()
-	const { createOrder, isLoadingCreate } = useCheckOrder()
 
 	const handleClick = () => {
-		user ? createOrder() : router.push(PUBLIC_URL.auth())
+		user ? router.push(PROFILE_URL.orders()) : router.push(PUBLIC_URL.auth())
 	}
 	const countProducts = items.reduce((acc, item) => {
 		return acc + item.quantity
@@ -65,9 +63,8 @@ export function HeaderCart() {
 								className={styles.check_order}
 								onClick={handleClick}
 								variant='primary'
-								disabled={isLoadingCreate}
 							>
-								Подтвердить заказ
+								Перейти к оформлению
 							</Button>
 						</SheetClose>
 					</>

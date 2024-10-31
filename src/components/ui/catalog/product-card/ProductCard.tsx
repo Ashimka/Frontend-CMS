@@ -20,7 +20,7 @@ export function ProductCard({ product }: ProductCardProps) {
 				<Image
 					className=' w-[314.8px] h-[236.1px] md:w-[427px] md:h-auto'
 					priority={true}
-					src={product.images.split(',')[0]}
+					src={product.images[0]}
 					alt={product.title}
 					width={300}
 					height={300}

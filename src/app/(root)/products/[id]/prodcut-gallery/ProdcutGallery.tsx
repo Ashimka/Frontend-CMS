@@ -19,14 +19,14 @@ export function ProdcutGallery({ product }: ProdcutGalleryProps) {
 			<Image
 				className={styles.image}
 				priority={true}
-				src={product.images.split(',')[currentIndex]}
+				src={product.images[currentIndex]}
 				alt={product.title}
 				width={500}
 				height={500}
 			/>
-			{product.images.split(',').length > 1 && (
+			{product?.images.length > 1 && (
 				<div className={styles.gallery}>
-					{product.images.split(',').map((image, index) => (
+					{product?.images.map((image, index) => (
 						<button
 							key={index}
 							onClick={() => setCurrentIndex(index)}

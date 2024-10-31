@@ -54,7 +54,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 		values: {
 			title: product?.title || '',
 			description: product?.description || '',
-			images: product?.images || '',
+			images: product?.images || [],
 			price: product?.price || 0,
 			categoryId: product?.category.id || ''
 		} || {
@@ -99,7 +99,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 									<ImageUpload
 										isDisabled={isLoadingCreate || isLoadingUpdate}
 										onChange={field.onChange}
-										value={field.value.split(',')}
+										value={field.value}
 									/>
 								</FormControl>
 								<FormMessage />

@@ -6,9 +6,21 @@ export interface IProduct {
 	title: string
 	description: string
 	price: number
-	images: string
+	images: string[]
 	category: ICategory
 	reviews: IReview[]
+}
+export interface IProductToCart {
+	id: string
+	title: string
+	price: number
+	images: string[]
+	category: ICategoryToCart
+}
+
+export interface ICategoryToCart {
+	id: string
+	title: string
 }
 
 export interface IProductInput

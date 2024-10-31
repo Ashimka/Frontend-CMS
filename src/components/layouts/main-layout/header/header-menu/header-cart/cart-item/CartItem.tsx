@@ -20,7 +20,7 @@ export function CartItem({ item }: CartItemProps) {
 		<div className={styles.item}>
 			<Link href={PUBLIC_URL.product(item.product.id)} className={styles.image}>
 				<Image
-					src={item.product.images.split(',')[0]}
+					src={item.product.images[0]}
 					alt={item.product.title}
 					fill
 					sizes='auto'
