@@ -10,6 +10,9 @@ export interface IProduct {
 	category: ICategory
 	reviews: IReview[]
 }
+export interface IFavoriteProducts {
+	products: IProduct
+}
 export interface IProductToCart {
 	id: string
 	title: string

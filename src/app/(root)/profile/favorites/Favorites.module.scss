@@ -1,0 +1,16 @@
+.wrapper {
+	@apply grid gap-4 md:grid-cols-2;
+
+	.title {
+		@apply text-base;
+	}
+	.image_box {
+		@apply aspect-video rounded-md mb-3;
+	}
+	.description {
+		@apply text-sm;
+	}
+	.footer {
+		@apply border-t pt-4;
+	}
+}

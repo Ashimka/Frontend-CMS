@@ -1,18 +1,7 @@
 .wrapper {
-	@apply my-6;
+	@apply container mx-auto py-8 px-4;
 
-	> .header {
-		@apply flex items-center justify-end gap-4 mb-4;
-
-		.item_link {
-			@apply py-1 px-2  rounded-sm hover:bg-indigo-400 hover:text-white;
-		}
-
-		svg {
-			@apply size-5;
-		}
-	}
-	> h2 {
-		@apply text-2xl font-bold;
+	.content {
+		@apply grid gap-8 md:grid-cols-3;
 	}
 }

@@ -38,7 +38,7 @@ export function ProductReviews({ product }: ProductReviewsProps) {
 				{product.reviews.length ? (
 					product.reviews.map(review => (
 						<div className={styles.review} key={review.id}>
-							<div className={styles.header}>
+							<div className={styles.top}>
 								<div className={styles.user}>
 									<Image
 										src={review.user.avatar}

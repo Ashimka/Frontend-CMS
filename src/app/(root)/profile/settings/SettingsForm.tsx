@@ -17,10 +17,10 @@ import { IProfileUser } from '@/shared/types/user.interface'
 
 interface ProfileFormProps {
 	profile?: IProfileUser
-	onClose: (close: boolean) => void
+	user?: string
 }
 
-export function SettingsForm({ profile, onClose }: ProfileFormProps) {
+export function SettingsForm({ profile, user }: ProfileFormProps) {
 	const { createPofile, isLoadingCreate } = useCreateProfile()
 	const { updateProfile, isLoadingUpdate } = useUpdateProfile()
 
@@ -29,8 +29,8 @@ export function SettingsForm({ profile, onClose }: ProfileFormProps) {
 	const form = useForm<IProfileUser>({
 		mode: 'onChange',
 		values: {
-			firstName: profile?.firstName || '',
-			lastName: profile?.lastName || '',
+			firstName: profile?.firstName || user?.split(' ')[0] || '',
+			lastName: profile?.lastName || user?.split(' ')[1] || '',
 			address: profile?.address || '',
 			phone: profile?.phone || ''
 		}
@@ -42,7 +42,6 @@ export function SettingsForm({ profile, onClose }: ProfileFormProps) {
 		} else {
 			createPofile(data)
 		}
-		onClose(false)
 	}
 
 	return (

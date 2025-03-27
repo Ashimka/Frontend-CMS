@@ -41,8 +41,8 @@ export function HeaderMenu() {
 							priority={true}
 							src={user.avatar}
 							alt={user.name}
-							width={42}
-							height={42}
+							width={24}
+							height={24}
 							className={styles.avatar}
 						/>
 					</Link>

@@ -1,7 +1,10 @@
 .header {
-	@apply p-5 gap-x-4 h-full flex justify-between items-center bg-amber-200 border-b;
+	@apply bg-amber-200 border-b;
+	.wrapper {
+		@apply lg:container p-5 gap-x-4 h-auto flex justify-between items-center;
 
-	> .search {
-		@apply ml-auto hidden w-[40%] lg:block;
+		> .search {
+			@apply ml-auto hidden w-[40%] lg:block;
+		}
 	}
 }

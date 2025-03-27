@@ -42,7 +42,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
 			<div className={styles.label}>
 				<h3>Средний рейтинг: </h3>
 				<div className='text-sm'>
-					⭐ {rating.toFixed(1)} |{' '}
+					⭐ {rating.toFixed(1)} |
 					{getReviewWordWithEnding(product.reviews.length)}
 				</div>
 			</div>

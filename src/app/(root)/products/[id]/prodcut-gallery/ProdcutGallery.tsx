@@ -15,7 +15,7 @@ export function ProdcutGallery({ product }: ProdcutGalleryProps) {
 	const [currentIndex, setCurrentIndex] = useState(0)
 
 	return (
-		<div>
+		<>
 			<Image
 				className={styles.image}
 				priority={true}
@@ -46,6 +46,6 @@ export function ProdcutGallery({ product }: ProdcutGalleryProps) {
 					))}
 				</div>
 			)}
-		</div>
+		</>
 	)
 }

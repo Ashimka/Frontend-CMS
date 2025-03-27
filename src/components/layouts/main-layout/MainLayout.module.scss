@@ -1,11 +1,9 @@
 .wrapper {
-	@apply flex flex-col h-full;
-
 	> .layout {
-		@apply flex-1;
+		@apply flex flex-col h-screen justify-between;
 
-		> main {
-			@apply mx-5 lg:mx-14;
+		> .main {
+			@apply mx-auto px-5 lg:container flex-auto;
 		}
 	}
 }

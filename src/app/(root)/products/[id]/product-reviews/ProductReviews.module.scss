@@ -1,5 +1,5 @@
 .header {
-	@apply flex justify-between items-center;
+	@apply border-t-2 border-indigo-200 pt-10 mt-10 flex justify-between items-center;
 
 	> h1 {
 		@apply text-2xl font-bold;
@@ -20,7 +20,7 @@
 	> .review {
 		@apply border rounded-lg p-4;
 
-		> .header {
+		> .top {
 			@apply flex justify-between;
 
 			> .user {

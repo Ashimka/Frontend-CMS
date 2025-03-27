@@ -1,6 +1,6 @@
 import { EnumRole } from './jwt.interface'
 import { IOrder } from './order.interface'
-import { IProduct } from './product.interface'
+import { IFavoriteProducts, IProduct } from './product.interface'
 
 export interface IUser {
 	id: string
@@ -9,7 +9,7 @@ export interface IUser {
 	avatar: string
 	role: EnumRole
 	createdAt: string
-	favorites: IProduct[]
+	favorites: IFavoriteProducts[]
 	orders: IOrder[]
 	profile: IProfileUser
 }

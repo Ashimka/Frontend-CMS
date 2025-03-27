@@ -13,11 +13,13 @@ export function Header() {
 
 	return (
 		<header className={styles.header}>
-			<Logo />
-			<div className={styles.search}>
-				<SearchInput />
+			<div className={styles.wrapper}>
+				<Logo />
+				<div className={styles.search}>
+					<SearchInput />
+				</div>
+				{isMedia768 ? <MobileHeaderMenu /> : <HeaderMenu />}
 			</div>
-			{isMedia768 ? <MobileHeaderMenu /> : <HeaderMenu />}
 		</header>
 	)
 }
