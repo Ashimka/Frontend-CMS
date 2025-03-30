@@ -3,5 +3,64 @@
 
 	.content {
 		@apply grid gap-8 md:grid-cols-3;
+
+		.user {
+			@apply md:col-span-1;
+
+			.info {
+				@apply flex flex-col items-center gap-4 pt-6;
+
+				.avatar {
+					@apply h-24 w-24 justify-center items-center;
+
+					.image {
+						@apply h-20 w-20;
+					}
+				}
+				.name {
+					@apply text-center;
+				}
+			}
+
+			.contacts {
+				@apply space-y-4 pt-2;
+
+				.box {
+					@apply border-t pt-4;
+
+					> h3 {
+						@apply font-medium mb-2;
+					}
+
+					.info_box {
+						@apply space-y-3;
+
+						.block {
+							@apply flex items-start gap-2;
+
+							> svg {
+								@apply h-4 w-4 mt-0.5 text-muted-foreground;
+							}
+							.block_info {
+								@apply text-sm;
+
+								> h4 {
+									@apply font-medium;
+								}
+								> p {
+									@apply text-muted-foreground;
+								}
+							}
+						}
+					}
+					.btn_icon {
+						@apply h-4 w-4 mt-0.5;
+					}
+					.btn_span {
+						@apply text-sm font-medium;
+					}
+				}
+			}
+		}
 	}
 }

@@ -13,6 +13,13 @@ type TypeData = {
 	}[]
 }
 
+interface IOrderDetails {
+	id: string
+	price: number
+	quantity: number
+	title: string
+}
+
 class OrderService {
 	async create(data: TypeData) {
 		return axiosWithAuth<IOrder>({
@@ -20,6 +27,12 @@ class OrderService {
 			method: 'POST',
 			data
 		})
+	}
+	async orderDetails(orderId: string): Promise<IOrderDetails[]> {
+		const { data } = await axiosWithAuth<IOrderDetails[]>({
+			url: API_URL.orders(`/${orderId}`)
+		})
+		return data
 	}
 }
 

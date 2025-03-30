@@ -17,6 +17,7 @@ import {
 	CardTitle
 } from '@/components/ui/Card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
+import { OrderDetailModal } from '@/components/ui/modals/OrderDetailsModal'
 
 import { DASHBOARD_URL } from '@/config/url.config'
 
@@ -29,6 +30,7 @@ import { EnumRole } from '@/shared/types/jwt.interface'
 import { EnumOrderStatus } from '@/shared/types/order.interface'
 
 import { formatDate } from '@/utils/date/format-date'
+import { formatPrice } from '@/utils/string/format-price'
 
 import styles from './Dashboard.module.scss'
 import { Favorites } from './favorites/Favorites'
@@ -41,7 +43,12 @@ export function Profile() {
 
 	const { user } = useProfile()
 	const [activeTab, setActiveTab] = useState('orders')
-
+	const [isDetailsDialogOpen, setIsDetailsDialogOpen] = useState(false)
+	const [selectedOrderInfo, setSelectedOrderInfo] = useState<{
+		orderId: string
+		total: number
+		address?: string
+	} | null>(null)
 	useEffect(() => {
 		const accessToken = searchParams.get('accessToken')
 		const tab = searchParams.get('tab')
@@ -60,6 +67,16 @@ export function Profile() {
 		router.push(`/profile?tab=${value}`, { scroll: false })
 	}
 
+	const handleDetailsClick = ({
+		orderId,
+		total
+	}: {
+		orderId: string
+		total: number
+	}) => {
+		setSelectedOrderInfo({ orderId, total, address: user?.profile.address })
+		setIsDetailsDialogOpen(true)
+	}
 	const { mutate: logout } = useMutation({
 		mutationKey: ['logout'],
 		mutationFn: () => authService.logout(),
@@ -76,61 +93,54 @@ export function Profile() {
 		<div className={styles.wrapper}>
 			<div className={styles.content}>
 				{/* User Info Card */}
-				<Card className='md:col-span-1'>
-					<CardHeader className='flex flex-col items-center gap-4 pt-6'>
-						<Avatar className='h-24 w-24 justify-center items-center'>
-							<AvatarImage className='h-20 w-20' src={user.avatar} alt='User' />
+				<Card className={styles.user}>
+					<CardHeader className={styles.info}>
+						<Avatar className={styles.avatar}>
+							<AvatarImage
+								className={styles.image}
+								src={user.avatar}
+								alt='User'
+							/>
 						</Avatar>
-						<div className='text-center'>
-							<CardTitle className='text-2xl'>{user.name}</CardTitle>
-							<CardDescription className='flex items-center justify-center gap-1 mt-1'></CardDescription>
+						<div className={styles.name}>
+							<CardTitle>{user.name}</CardTitle>
+							<CardDescription></CardDescription>
 						</div>
 					</CardHeader>
 					<CardContent>
-						<div className='space-y-4 pt-2'>
-							<div className='border-t pt-4'>
-								<h3 className='font-medium mb-2'>Контактная информация</h3>
+						<div className={styles.contacts}>
+							<div className={styles.box}>
+								<h3>Контактная информация</h3>
 								{user.profile && (
-									<div className='space-y-3'>
-										<div className='flex items-start gap-2'>
-											<MapPin className='h-4 w-4 mt-0.5 text-muted-foreground' />
-											<div>
-												<p className='text-sm font-medium'>Адрес доставки:</p>
-												<p className='text-sm text-muted-foreground'>
-													{user.profile.address}
-												</p>
+									<div className={styles.info_box}>
+										<div className={styles.block}>
+											<MapPin />
+											<div className={styles.block_info}>
+												<h4>Адрес доставки:</h4>
+												<p>{user.profile.address}</p>
 											</div>
 										</div>
 										{user.email && (
-											<div className='flex items-start gap-2'>
-												<Mail className='h-4 w-4 mt-0.5 text-muted-foreground' />
-												<div>
-													<p className='text-sm font-medium'>Email:</p>
-													<p className='text-sm text-muted-foreground'>
-														{user.email}
-													</p>
+											<div className={styles.block}>
+												<Mail />
+												<div className={styles.block_info}>
+													<h4>Email:</h4>
+													<p>{user.email}</p>
 												</div>
 											</div>
 										)}
-										<div className='flex items-start gap-2'>
-											<User className='h-4 w-4 mt-0.5 text-muted-foreground' />
-											<div>
-												<p className='text-sm font-medium'>Телефон:</p>
-												<p className='text-sm text-muted-foreground'>
-													{user.profile.phone}
-												</p>
+										<div className={styles.block}>
+											<User />
+											<div className={styles.block_info}>
+												<h4>Телефон:</h4>
+												<p>{user.profile.phone}</p>
 											</div>
 										</div>
 									</div>
 								)}
 								{user.role === EnumRole.ADMIN && (
 									<Button variant='link' className='mt-5 text-indigo-600'>
-										<Link
-											href={DASHBOARD_URL.home()}
-											className={styles.item_link}
-										>
-											Админ панель
-										</Link>
+										<Link href={DASHBOARD_URL.home()}>Админ панель</Link>
 									</Button>
 								)}
 
@@ -139,9 +149,9 @@ export function Profile() {
 									onClick={() => logout()}
 									className='mt-5 flex items-start gap-2'
 								>
-									<LogOut className='h-4 w-4 mt-0.5' />
+									<LogOut className={styles.btn_icon} />
 
-									<span className='text-sm font-medium '>Выход</span>
+									<span className={styles.btn_span}>Выход</span>
 								</Button>
 							</div>
 						</div>
@@ -181,16 +191,22 @@ export function Profile() {
 												{` ${order.status === EnumOrderStatus.PENDING ? 'Готовиться' : 'Доставлен'}`}
 											</p>
 											<p className='text-sm'>
-												<b>К оплате:</b> {`${order.total} ₽`}
+												<b>К оплате:</b> {`${formatPrice(order.total)} ₽`}
 											</p>
 										</CardContent>
 										<CardFooter className='flex justify-between border-t pt-4'>
 											<div className='flex gap-2'>
-												<Button variant='ghost' size='sm'>
+												<Button
+													variant='primary'
+													size='sm'
+													onClick={() =>
+														handleDetailsClick({
+															orderId: order.id,
+															total: order.total
+														})
+													}
+												>
 													Детали
-												</Button>
-												<Button variant='ghost' size='sm'>
-													Отменить
 												</Button>
 											</div>
 										</CardFooter>
@@ -217,6 +233,13 @@ export function Profile() {
 					</Tabs>
 				</div>
 			</div>
+			{selectedOrderInfo && (
+				<OrderDetailModal
+					isOpen={isDetailsDialogOpen}
+					onOpenChange={setIsDetailsDialogOpen}
+					orderDate={selectedOrderInfo}
+				/>
+			)}
 		</div>
 	)
 }
