@@ -56,4 +56,11 @@
 	.footer {
 		@apply mt-5 px-3;
 	}
+	.cart_empty {
+		@apply mt-5 flex flex-col justify-center items-center gap-3;
+
+		.cart_empty_title {
+			@apply font-light text-lg;
+		}
+	}
 }

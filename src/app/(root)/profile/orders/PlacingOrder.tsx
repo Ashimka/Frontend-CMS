@@ -8,9 +8,10 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Loader } from '@/components/ui/Loader'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/Radio-group'
+import { Skeleton } from '@/components/ui/Skeleton'
 import { Label } from '@/components/ui/form-elements/Label'
 
-import { PROFILE_URL } from '@/config/url.config'
+import { PROFILE_URL, PUBLIC_URL } from '@/config/url.config'
 
 import { useCheckOrder } from '@/hooks/order/useCheckOrder'
 import { useCart } from '@/hooks/useCart'
@@ -41,92 +42,119 @@ const PlacingOrder = () => {
 	return (
 		<>
 			{isLoadingCreate ? (
-				<Loader />
+				<div className='mt-5 flex flex-col gap-5'>
+					<Skeleton className='h-6 w-full' />
+					<Skeleton className='h-20 w-full' />
+					<Skeleton className='h-20 w-full' />
+					<Skeleton className='h-6 w-4/12' />
+				</div>
 			) : (
 				<div className={styles.wrapper}>
-					<h2 className={styles.title}>Оформление заказа</h2>
-					<h3 className={styles.sub_title}>Заказ от {formatDate(date)}</h3>
-					<div className={styles.content}>
-						<div className={styles.products}>
-							{items.map(item => (
-								<div className={styles.cols} key={item.id}>
-									<div className={styles.image}>
-										<Image
-											src={item.product.images[0]}
-											alt={item.product.title}
-											width={100}
-											height={100}
-											priority
-										/>
-									</div>
-									<div className={styles.description}>
-										<span className={styles.product}>{item.product.title}</span>
-										<span className={styles.category}>
-											{item.product.category.title}
-										</span>
-										<span
-											className={styles.quantity}
-										>{`Количество ${item.quantity}`}</span>
-									</div>
-									<div className={styles.price}>{`${item.price} ₽`}</div>
+					{items.length > 0 ? (
+						<>
+							<h2 className={styles.title}>Оформление заказа</h2>
+							<h3 className={styles.sub_title}>Заказ от {formatDate(date)}</h3>
+							<div className={styles.content}>
+								<div className={styles.products}>
+									{items.map(item => (
+										<div className={styles.cols} key={item.id}>
+											<div className={styles.image}>
+												<Image
+													src={item.product.images[0]}
+													alt={item.product.title}
+													width={100}
+													height={100}
+													priority
+												/>
+											</div>
+											<div className={styles.description}>
+												<span className={styles.product}>
+													{item.product.title}
+												</span>
+												<span className={styles.category}>
+													{item.product.category.title}
+												</span>
+												<span
+													className={styles.quantity}
+												>{`Количество ${item.quantity}`}</span>
+											</div>
+											<div className={styles.price}>{`${item.price} ₽`}</div>
+										</div>
+									))}
 								</div>
-							))}
-						</div>
-						<div className={styles.delivery}>
-							<h3>Доставка</h3>
-							<h6>Бесплатная доставка от 600 рублей</h6>
-							<RadioGroup>
-								<div className='flex items-center space-x-2'>
-									<RadioGroupItem
-										value='delivery-courier'
-										checked={delivery === 'delivery-courier'}
-										onClick={() => setDelivery('delivery-courier')}
-										id='delivery-courier'
-									/>
-									<Label htmlFor='delivery-courier'>Курьером</Label>
-								</div>
-								<div className='flex items-center space-x-2'>
-									<RadioGroupItem
-										value='pickup-myself'
-										checked={delivery === 'pickup-myself'}
-										onClick={() => setDelivery('pickup-myself')}
-										id='pickup-myself'
-									/>
-									<Label htmlFor='pickup-myself'>Забрать самому</Label>
-								</div>
-							</RadioGroup>
-							<div className={styles.address}>
-								{delivery === 'pickup-myself' && (
-									<>
-										<p>Адрес магазина:</p>
-										<address>Москва, улица Ломоносова, дом 77</address>
-									</>
-								)}
-								{delivery === 'delivery-courier' && (
-									<>
-										{user?.profile?.address ? (
-											<address>{user?.profile.address}</address>
-										) : (
-											<Link
-												href={PROFILE_URL.settings()}
-												className='text-purple-600'
-											>
-												Указать адрес
-											</Link>
+								<div className={styles.delivery}>
+									<h3>Доставка</h3>
+									<h6>Бесплатная доставка от 600 рублей</h6>
+									<RadioGroup>
+										<div className='flex items-center space-x-2'>
+											<RadioGroupItem
+												value='delivery-courier'
+												checked={delivery === 'delivery-courier'}
+												onClick={() => setDelivery('delivery-courier')}
+												id='delivery-courier'
+											/>
+											<Label htmlFor='delivery-courier'>Курьером</Label>
+										</div>
+										<div className='flex items-center space-x-2'>
+											<RadioGroupItem
+												value='pickup-myself'
+												checked={delivery === 'pickup-myself'}
+												onClick={() => setDelivery('pickup-myself')}
+												id='pickup-myself'
+											/>
+											<Label htmlFor='pickup-myself'>Забрать самому</Label>
+										</div>
+									</RadioGroup>
+									<div className={styles.address}>
+										{delivery === 'pickup-myself' && (
+											<>
+												<p>Адрес магазина:</p>
+												<address>Москва, улица Ломоносова, дом 77</address>
+											</>
 										)}
-									</>
-								)}
+										{delivery === 'delivery-courier' && (
+											<>
+												{user?.profile?.address ? (
+													<address>{user?.profile.address}</address>
+												) : (
+													<Link
+														href={PROFILE_URL.settings()}
+														className='text-purple-600'
+													>
+														Указать адрес
+													</Link>
+												)}
+											</>
+										)}
+									</div>
+									<div className={styles.total_cost}>
+										<span>
+											Итого к оплате:{' '}
+											{totalCost <= 600
+												? formatPrice(+totalCost + Number(600))
+												: formatPrice(totalCost)}
+										</span>
+									</div>
+								</div>
 							</div>
-							<div className={styles.total_cost}>
-								<span>Итого к оплате: {formatPrice(totalCost)}</span>
+							<div className={styles.footer}>
+								<Button onClick={handleClick} variant={'primary'}>
+									Заказать
+								</Button>
 							</div>
-						</div>
-					</div>
-					<div className={styles.footer}>
-						<Button onClick={handleClick} variant={'primary'}>
-							Заказать
-						</Button>
-					</div>
+						</>
+					) : (
+						<>
+							<div className={styles.cart_empty}>
+								<h3 className={styles.cart_empty_title}>
+									Нет продуктов для заказа
+								</h3>
+								<Button variant='primary'>
+									<Link href={PUBLIC_URL.explorer()}> За покупками</Link>
+								</Button>
+							</div>
+						</>
+					)}
 				</div>
 			)}
 		</>

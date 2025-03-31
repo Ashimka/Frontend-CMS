@@ -30,6 +30,7 @@ import { EnumRole } from '@/shared/types/jwt.interface'
 import { EnumOrderStatus } from '@/shared/types/order.interface'
 
 import { formatDate } from '@/utils/date/format-date'
+import { formattedPhoneNumber } from '@/utils/date/format-phone'
 import { formatPrice } from '@/utils/string/format-price'
 
 import styles from './Dashboard.module.scss'
@@ -133,7 +134,7 @@ export function Profile() {
 											<User />
 											<div className={styles.block_info}>
 												<h4>Телефон:</h4>
-												<p>{user.profile.phone}</p>
+												<p>{formattedPhoneNumber(user.profile.phone)}</p>
 											</div>
 										</div>
 									</div>

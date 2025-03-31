@@ -15,6 +15,8 @@ import { useUpdateProfile } from '@/hooks/queries/profile/useUpdateProfile'
 
 import { IProfileUser } from '@/shared/types/user.interface'
 
+import { formattedPhoneNumber } from '@/utils/date/format-phone'
+
 interface ProfileFormProps {
 	profile?: IProfileUser
 	user?: string
@@ -32,7 +34,7 @@ export function SettingsForm({ profile, user }: ProfileFormProps) {
 			firstName: profile?.firstName || user?.split(' ')[0] || '',
 			lastName: profile?.lastName || user?.split(' ')[1] || '',
 			address: profile?.address || '',
-			phone: profile?.phone || ''
+			phone: formattedPhoneNumber(profile?.phone || '') || ''
 		}
 	})
 
