@@ -27,6 +27,7 @@ import { ConfirmModal } from '@/components/ui/modals/ConfirmModal'
 import { useCreateProduct } from '@/hooks/queries/products/useCreateProduct'
 import { useDeleteProduct } from '@/hooks/queries/products/useDeleteProduct'
 import { useUpdateProduct } from '@/hooks/queries/products/useUpdateProduct'
+import { useFileDelete } from '@/hooks/useFileDelete'
 
 import { ICategory } from '@/shared/types/category.interface'
 import { IProduct, IProductInput } from '@/shared/types/product.interface'
@@ -42,6 +43,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 	const { createProduct, isLoadingCreate } = useCreateProduct()
 	const { updateProduct, isLoadingUpdate } = useUpdateProduct()
 	const { deleteProduct, isLoadingDelete } = useDeleteProduct()
+	const { deleteFile } = useFileDelete()
 
 	const title = product ? 'Изменить данные' : 'Создать'
 	const description = product
@@ -52,17 +54,11 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 	const form = useForm<IProductInput>({
 		mode: 'onChange',
 		values: {
-			title: product?.title || '',
-			description: product?.description || '',
-			images: product?.images || [],
-			price: product?.price || 0,
-			categoryId: product?.category.id || ''
-		} || {
-			title: '',
-			description: '',
-			images: [],
-			price: 0,
-			categoryId: ''
+			title: product?.title ?? '',
+			description: product?.description ?? '',
+			images: product?.images ?? [],
+			price: product?.price ?? 0,
+			categoryId: product?.category.id ?? ''
 		}
 	})
 
@@ -70,6 +66,12 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 		data.price = Number(data.price)
 		if (product) updateProduct(data)
 		else createProduct(data)
+	}
+
+	const handleDeleteImage = (name: string) => {
+		const file = name.split('/').at(-1)!
+
+		deleteFile(file)
 	}
 
 	return (
@@ -98,8 +100,15 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 								<FormControl>
 									<ImageUpload
 										isDisabled={isLoadingCreate || isLoadingUpdate}
-										onChange={field.onChange}
-										value={field.value}
+										onChange={urls => field.onChange(urls)}
+										value={field.value || []}
+										handleDeleteImage={urlToDelete => {
+											const newUrls = field.value.filter(
+												url => url !== urlToDelete
+											)
+											field.onChange(newUrls)
+											handleDeleteImage(urlToDelete)
+										}}
 									/>
 								</FormControl>
 								<FormMessage />

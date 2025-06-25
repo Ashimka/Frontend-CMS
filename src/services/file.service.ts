@@ -23,6 +23,20 @@ class FileService {
 
 		return data
 	}
+
+	async deleteFile(name: string) {
+		const { data } = await axiosWithAuth({
+			url: API_URL.files(`/${name}`),
+			method: 'DELETE',
+			params: {
+				folder: 'products'
+			},
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
+		return data
+	}
 }
 
 export const fileService = new FileService()

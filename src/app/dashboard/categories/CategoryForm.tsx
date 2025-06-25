@@ -43,11 +43,8 @@ export function CategoryForm({ category }: ICategoryForm) {
 	const form = useForm<ICategoryInput>({
 		mode: 'onChange',
 		values: {
-			title: category?.title || '',
-			description: category?.description || ''
-		} || {
-			title: '',
-			description: ''
+			title: category?.title ?? '',
+			description: category?.description ?? ''
 		}
 	})
 

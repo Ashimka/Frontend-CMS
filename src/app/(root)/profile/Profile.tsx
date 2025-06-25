@@ -50,6 +50,7 @@ export function Profile() {
 		total: number
 		address?: string
 	} | null>(null)
+
 	useEffect(() => {
 		const accessToken = searchParams.get('accessToken')
 		const tab = searchParams.get('tab')

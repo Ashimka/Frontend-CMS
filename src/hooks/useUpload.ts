@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
-import { ChangeEvent, useMemo, useRef } from 'react'
+import { ChangeEvent, useRef } from 'react'
 import toast from 'react-hot-toast'
 
 import { fileService } from '@/services/file.service'
@@ -35,13 +35,10 @@ export function useUpload(onChange: (value: string[]) => void) {
 		fileInputRef.current?.click()
 	}
 
-	return useMemo(
-		() => ({
-			handleButtonClick,
-			isUploading,
-			fileInputRef,
-			handleFileChange
-		}),
-		[handleButtonClick, isUploading, fileInputRef, handleFileChange]
-	)
+	return {
+		handleButtonClick,
+		isUploading,
+		fileInputRef,
+		handleFileChange
+	}
 }
