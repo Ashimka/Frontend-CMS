@@ -23,10 +23,10 @@ export function ImageUpload({
 	value,
 	handleDeleteImage
 }: ImageUploadProps) {
-	const { handleButtonClick, isUploading, fileInputRef, handleFileChange } =
-		useUpload(onChange)
-
 	const imageValues = Array.isArray(value) ? value : [value].filter(Boolean)
+
+	const { handleButtonClick, isUploading, fileInputRef, handleFileChange } =
+		useUpload(onChange, imageValues)
 
 	const handleDelete = (url: string) => {
 		if (isDisabled) return
