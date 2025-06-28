@@ -16,36 +16,38 @@ export function ProdcutGallery({ product }: ProdcutGalleryProps) {
 
 	return (
 		<>
-			<Image
-				className={styles.image}
-				priority={true}
-				src={product.images[currentIndex]}
-				alt={product.title}
-				width={500}
-				height={500}
-			/>
-			{product?.images.length > 1 && (
-				<div className={styles.gallery}>
-					{product?.images.map((image, index) => (
-						<button
-							key={index}
-							onClick={() => setCurrentIndex(index)}
-							className={cn(
-								styles.item,
-								index === currentIndex ? 'border-black' : 'border-transparent'
-							)}
-						>
-							<Image
-								priority={true}
-								src={image}
-								alt={product.title}
-								width={100}
-								height={100}
-							/>
-						</button>
-					))}
-				</div>
-			)}
+			<div>
+				<Image
+					className={styles.image}
+					priority={true}
+					src={product.images[currentIndex]}
+					alt={product.title}
+					width={500}
+					height={500}
+				/>
+				{product?.images.length > 1 && (
+					<div className={styles.gallery}>
+						{product?.images.map((image, index) => (
+							<button
+								key={index}
+								onClick={() => setCurrentIndex(index)}
+								className={cn(
+									styles.item,
+									index === currentIndex ? 'border-black' : 'border-transparent'
+								)}
+							>
+								<Image
+									priority={true}
+									src={image}
+									alt={product.title}
+									width={100}
+									height={100}
+								/>
+							</button>
+						))}
+					</div>
+				)}
+			</div>
 		</>
 	)
 }

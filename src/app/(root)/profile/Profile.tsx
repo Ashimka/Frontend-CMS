@@ -141,7 +141,7 @@ export function Profile() {
 									</div>
 								)}
 								{user.role === EnumRole.ADMIN && (
-									<Button variant='link' className='mt-5 text-indigo-600'>
+									<Button variant='primary' className='mt-5'>
 										<Link href={DASHBOARD_URL.home()}>Админ панель</Link>
 									</Button>
 								)}

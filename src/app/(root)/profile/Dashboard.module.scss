@@ -14,7 +14,7 @@
 					@apply h-24 w-24 justify-center items-center;
 
 					.image {
-						@apply h-20 w-20;
+						@apply size-20 rounded-full;
 					}
 				}
 				.name {

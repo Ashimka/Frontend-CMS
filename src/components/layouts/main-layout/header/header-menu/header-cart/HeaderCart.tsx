@@ -37,7 +37,7 @@ export function HeaderCart() {
 			<SheetTrigger asChild>
 				<div className='relative'>
 					{countProducts > 0 && (
-						<span className='px-1 py-0 rounded-lg text-sm absolute bottom-4 left-6 bg-red-500 text-white'>
+						<span className='absolute top-[-20px] right-[-15px] bg-rose-600 text-white rounded-full text-xs flex items-center justify-center min-w-[20px] min-h-[20px]'>
 							{countProducts}
 						</span>
 					)}

@@ -21,7 +21,7 @@ export function HeaderMenu() {
 			<HeaderCart />
 			<Link
 				href={PUBLIC_URL.explorer()}
-				className='px-2 py-1 rounded-lg hover:bg-blue-100'
+				className='px-2 py-1 rounded-lg hover:bg-indigo-500/90 hover:text-white'
 			>
 				Каталог
 			</Link>
@@ -31,7 +31,7 @@ export function HeaderMenu() {
 				<>
 					<Link
 						href={PROFILE_URL.favorites()}
-						className='px-2 py-1 rounded-lg hover:bg-blue-100'
+						className='px-2 py-1 rounded-lg hover:bg-indigo-500/90 hover:text-white'
 					>
 						Избранное
 					</Link>
@@ -41,8 +41,8 @@ export function HeaderMenu() {
 							priority={true}
 							src={user.avatar}
 							alt={user.name}
-							width={24}
-							height={24}
+							width={36}
+							height={36}
 							className={styles.avatar}
 						/>
 					</Link>
