@@ -6,7 +6,7 @@ import { IProduct, IProductInput } from '@/shared/types/product.interface'
 
 class ProductService {
 	async getAll(searchTerm?: string | null) {
-		const { data } = await axiosClassic<IProduct[]>({
+		const { data } = await axiosClassic({
 			url: API_URL.products(),
 			method: 'GET',
 			params: searchTerm
@@ -16,7 +16,9 @@ class ProductService {
 				: {}
 		})
 
-		return data || []
+		const allProduct: IProduct[] = data.items
+
+		return allProduct || []
 	}
 
 	async getById(id: string) {
