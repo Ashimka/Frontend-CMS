@@ -1,3 +1,5 @@
+import { AxiosError } from 'axios'
+
 import { axiosClassic, axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api.config'
@@ -8,17 +10,22 @@ import { removeTokenFromStorage, saveTokenStorage } from './auth-token.service'
 
 class AuthService {
 	async main(type: 'login' | 'register', data: IAuthForm) {
-		const response = await axiosClassic<IAuthResponse>({
-			url: API_URL.auth(`${type}`),
-			method: 'POST',
-			data
-		})
+		try {
+			const response = await axiosClassic<IAuthResponse>({
+				url: API_URL.auth(`${type}`),
+				method: 'POST',
+				data
+			})
 
-		if (response.data.accessToken) {
-			saveTokenStorage(response.data.accessToken)
+			if (response.data.accessToken) {
+				saveTokenStorage(response.data.accessToken)
+			}
+			return response
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				throw error
+			}
 		}
-
-		return response
 	}
 	async getNewTokens() {
 		const response = await axiosClassic<IAuthResponse>({

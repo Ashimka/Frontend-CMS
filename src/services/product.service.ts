@@ -6,19 +6,22 @@ import { IProduct, IProductInput } from '@/shared/types/product.interface'
 
 class ProductService {
 	async getAll(searchTerm?: string | null) {
-		const { data } = await axiosClassic({
-			url: API_URL.products(),
-			method: 'GET',
-			params: searchTerm
-				? {
-						searchTerm
-					}
-				: {}
-		})
+		try {
+			const { data } = await axiosClassic({
+				url: API_URL.products(),
+				method: 'GET',
+				params: searchTerm
+					? {
+							searchTerm
+						}
+					: {}
+			})
 
-		const allProduct: IProduct[] = data.items
-
-		return allProduct || []
+			const allProduct: IProduct[] = data.items
+			return allProduct || []
+		} catch (error) {
+			return []
+		}
 	}
 
 	async getById(id: string) {
@@ -40,12 +43,16 @@ class ProductService {
 	}
 
 	async getMostPopular() {
-		const { data } = await axiosClassic<IProduct[]>({
-			url: API_URL.products(`/most-popular`),
-			method: 'GET'
-		})
+		try {
+			const { data } = await axiosClassic<IProduct[]>({
+				url: API_URL.products(`/most-popular`),
+				method: 'GET'
+			})
 
-		return data
+			return data || []
+		} catch (error) {
+			return []
+		}
 	}
 
 	async getSimilar(id: string) {

@@ -28,7 +28,7 @@ export function useAuthForm(isReq: boolean) {
 		},
 		onError(error: Error | AxiosError) {
 			axios.isAxiosError(error)
-				? toast.error(error.response?.data?.message)
+				? toast.error(error.response?.data?.message || error.message)
 				: toast.error('Ошибка авторизации')
 		}
 	})
