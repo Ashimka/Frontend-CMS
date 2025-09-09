@@ -10,9 +10,14 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 async function getProducts() {
-	const data = await productService.getAll()
+	try {
+		const data = await productService.getAll()
+		return data
+	} catch (error) {
+		console.error('Ошибка при загрузке продуктов на сервере:', error)
 
-	return data
+		return []
+	}
 }
 
 export default async function ExplorerPage() {

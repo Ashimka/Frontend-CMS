@@ -17,10 +17,10 @@ class ProductService {
 					: {}
 			})
 
-			const allProduct: IProduct[] = data.items
-			return allProduct || []
+			const allProduct: IProduct[] = data?.items || []
+			return allProduct
 		} catch (error) {
-			return []
+			throw error
 		}
 	}
 
